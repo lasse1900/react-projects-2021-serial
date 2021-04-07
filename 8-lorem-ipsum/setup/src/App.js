@@ -7,7 +7,15 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Hello w')
+    // console.log(typeof count)
+    let amount = parseInt(count)
+    if (count <= 0) {
+      amount = 1
+    }
+    if (count > 8) {
+      amount = 8
+    }
+    setText(data.slice(0, amount))
   }
 
   return (
@@ -15,14 +23,17 @@ function App() {
       <h3>tired of boring lorem ipsum</h3>
       <form className='lorem-ipsum' onSubmit={handleSubmit}>
         <label htmlFor="amount">
-        paragraphs:
+          paragraphs:
         </label>
-        <input type="number" name='amout' id='amount' value={count} onChange={(e) => setCount(e.target.value) }/>
+        <input type="number" name='amout' id='amount' value={count} onChange={(e) => setCount(e.target.value)} />
         <button type='submit' className='btn'>generate</button>
       </form>
       <article className='lorem-text'>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, voluptatem?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, fugit?</p>
+        {text.map((item, index) => {
+          return <p key={index}>
+            {item}
+          </p>
+        })}
       </article>
     </section>
   )
