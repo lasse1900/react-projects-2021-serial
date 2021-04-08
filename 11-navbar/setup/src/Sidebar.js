@@ -1,23 +1,35 @@
 import React from 'react'
+import { links, social } from './data'
+import { FaBars, FaTwitter } from 'react-icons/fa'
+import logo from './logo.svg'
 
 const Sidebar = () => {
   return (
-    <div className="links-container show-container">
-      <ul className="links">
-        <li>
-          <a href="#">home</a>
-        </li>
-        <li>
-          <a href="#">about</a>
-        </li>
-        <li>
-          <a href="#">contact</a>
-        </li>
-        <li>
-          <a href="#">products</a>
-        </li>
-      </ul>
-    </div>
+    <nav>
+    Sidebar
+      <div className="nav-center">
+        <div className="links-container show-container">
+          <ul className="links">
+            {links.map((link) => {
+              const { id, url, text } = link
+              return <li key={id}>
+                <a href={url}>
+                  {text}
+                </a>
+              </li>
+            })}
+          </ul>
+        </div>
+        <ul className="social-icons">
+          {social.map((socialIcon) => {
+            const { id, url, icon } = socialIcon
+            return <li key={id}>
+              <a href={url}>{icon}</a>
+            </li>
+          })}
+        </ul>
+      </div>
+    </nav>
   )
 }
 
